@@ -1,0 +1,14 @@
+{"message":"List with id 42f6dff4-69af-4fe3-aa82-a02fb87ba792 created","level":"info"}
+{"message":"List with id 2a1ed422-cc4e-4d11-ae51-e397430c698e created","level":"info"}
+{"message":"Title is required","level":"error"}
+{"message":"Title is required","level":"error"}
+{"message":"Title is required","level":"error"}
+{"message":"Title is required","level":"error"}
+{"message":"List with id 10c8f893-f226-4709-a11c-c437a0593c50 created","level":"info"}
+{"message":"List with id 10c8f893-f226-4709-a11c-c437a0593c50 not found.","level":"error"}
+{"message":"List with id 10c8f893-f226-4709-a11c-c437a0593c50 not found.","level":"error"}
+{"message":"List with id 10c8f893-f226-4709-a11c-c437a0593c50 not found.","level":"error"}
+{"message":"List with id bc15cffe-9fb5-40f7-bc4f-d65f3ed1dbfc created","level":"info"}
+{"message":"List with id bc15cffe-9fb5-40f7-bc4f-d65f3ed1dbfc deleted.","level":"info"}
+{"message":"List with id d17cc249-e01a-4772-a52d-04ef43e41437 created","level":"info"}
+{"message":"List with id 456bd8c8-e1af-4cb2-bd2c-e003241394de created","level":"info"}
