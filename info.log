@@ -12,3 +12,8 @@
 {"message":"List with id bc15cffe-9fb5-40f7-bc4f-d65f3ed1dbfc deleted.","level":"info"}
 {"message":"List with id d17cc249-e01a-4772-a52d-04ef43e41437 created","level":"info"}
 {"message":"List with id 456bd8c8-e1af-4cb2-bd2c-e003241394de created","level":"info"}
+{"message":"List with id eba72aef-d3fb-469e-b248-b7777092a70e created","level":"info"}
+{"message":"List with id e929db66-9c83-43d2-87ec-a692bd766f7e created","level":"info"}
+{"message":"List with id e929db66-9c83-43d2-87ec-a692bd766f7e not found.","level":"error"}
+{"message":"List with id 64d6db27-bba0-45ff-895a-b0d81216ed37 created","level":"info"}
+{"message":"List with id 64d6db27-bba0-45ff-895a-b0d81216ed37 deleted.","level":"info"}

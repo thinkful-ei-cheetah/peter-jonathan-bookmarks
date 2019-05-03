@@ -30,11 +30,11 @@ const bookmarks = [
 ]
 
 bookmarksRouter
-  .get('/bookmarks', (req, res) => {
+  .route('/bookmarks')
+  .get((req, res) => {
     res.json(bookmarks);
   })
   .post(bodyParser, (req, res) => {
-    console.log(req.body)
     const { title, rating, url, description } = req.body;
     const parsedRating = parseInt(rating);
 
