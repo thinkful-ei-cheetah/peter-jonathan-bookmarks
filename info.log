@@ -17,3 +17,4 @@
 {"message":"List with id e929db66-9c83-43d2-87ec-a692bd766f7e not found.","level":"error"}
 {"message":"List with id 64d6db27-bba0-45ff-895a-b0d81216ed37 created","level":"info"}
 {"message":"List with id 64d6db27-bba0-45ff-895a-b0d81216ed37 deleted.","level":"info"}
+{"message":"Unauthorized request to path: /bookmarks","level":"error"}
