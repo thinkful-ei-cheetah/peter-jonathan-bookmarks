@@ -8,7 +8,8 @@
     "start": "node src/server.js",
     "dev": "nodemon src/server.js",
     "predeploy": "npm audit",
-    "deploy": "git push heroku master"
+    "deploy": "git push heroku master",
+    "migrate": "postgrator --config postgrator-config.js"
   },
   "engines": {
     "node": "12.1.0"
@@ -22,9 +23,14 @@
     "express": "^4.16.4",
     "express-router": "0.0.1",
     "helmet": "^3.16.0",
+    "knex": "^0.16.5",
     "morgan": "^1.9.1",
     "nodemon": "^1.19.0",
+    "pg": "^7.10.0",
     "uuid": "^3.3.2",
     "winston": "^3.2.1"
+  },
+  "devDependencies": {
+    "postgrator-cli": "^3.1.0"
   }
 }

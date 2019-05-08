@@ -32,7 +32,7 @@ const bookmarks = [
 bookmarksRouter
   .route('/bookmarks')
   .get((req, res) => {
-    res.json(bookmarks);
+    const knexInstance = req.app.get('db')
   })
   .post(bodyParser, (req, res) => {
     const { title, rating, url, description } = req.body;
