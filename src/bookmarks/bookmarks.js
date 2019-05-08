@@ -2,40 +2,38 @@ const express = require('express');
 const uuid = require('uuid/v4');
 const logger = require('../logger');
 const bookmarksRouter = express.Router();
-
 const bodyParser = express.json();
+const BookmarksService = require('./bookmarks-service')
 
-const bookmarks = [
-  {
-    title: "Google",
-    rating: 5,
-    url: "http://google.com",
-    description: "The best search engine ever.",
-    id: 1,
-  },
-  {
-    title: "IMDB",
-    rating: 5,
-    url: "http://imdb.com",
-    description: "The best movie search engine ever.",
-    id: 2,
-  },
-  {
-    title: "Facebook",
-    rating: 5,
-    url: "http://facebook.com",
-    description: "The best time sink ever.",
-    id: 3,
-  }
-]
+const serializeBookmark = bookmark => ({
+  id: bookmark.id,
+  title: bookmark.title,
+  url: bookmark.url,
+  description: bookmark.description,
+  rating: Number(bookmark.rating),
+})
 
 bookmarksRouter
   .route('/bookmarks')
-  .get((req, res) => {
-    const knexInstance = req.app.get('db')
+  .get((req, res, next) => {
+      const knexInstance = req.app.get('db')
+
+      BookmarksService.getAllBookmarks(knexInstance)
+        .then(bookmarks => {
+         res.json(bookmarks.map(bookmark=> ({
+           id: bookmark.id,
+           title: bookmark.title,
+           url: bookmark.url,
+          description: bookmark.description,
+        
+         })))
+        })
+        .catch(next)
+
   })
-  .post(bodyParser, (req, res) => {
-    const { title, rating, url, description } = req.body;
+  .post(bodyParser, (req, res, next) => {
+   
+    const { title, url, rating, description } = req.body;
     const parsedRating = parseInt(rating);
 
     if(!title) {
@@ -50,71 +48,50 @@ bookmarksRouter
         .status(400)
         .send('Invalid Data');
     }
-    if(!url) {
-      logger.error('Url is required')
-      return res
-        .status(400)
-        .send('Invalid Data');
-    }
-    if(!description) {
-      logger.error('Description is required')
-      return res
-        .status(400)
-        .send('Invalid Data');
-    }
-    const id = uuid();
 
-    const bookmark = {
-      title,
-      rating: parsedRating,
-      url,
-      description,
-      id
+    const insertBookmark = {
+      title: title,
+      rating: rating,
+      url: url,
+      description: description
     }
-    bookmarks.push(bookmark);
 
-    logger.info(`List with id ${id} created`);
+    const knexInstance = req.app.get('db')
 
-    res
-      .status(201)
-      .location(`http://localhost:8000/bookmarks/${id}`)
-      .json({id});
+    BookmarksService.insertBookmark(knexInstance, insertBookmark)
+      .then(returnObject => {
+          return res.json(returnObject)
+      })
+      .catch(next)
   })
 
   bookmarksRouter
     .route('/bookmarks/:id')
-    .get((req, res) => {
+    .get((req, res, next) => {
       const { id } = req.params;
       const parseId = parseInt(id);
-      const bookmark = bookmarks.find(bm => bm.id === parseId);
 
-      if(!bookmark) {
-        logger.error(`List with id ${id} not found.`);
-        return res
-          .status(404)
-          .send('List Not Found');
-      }
-
-      res.json(bookmarks);
+      const knexInstance = req.app.get('db')
+    
+      BookmarksService.getBookmarkById(knexInstance, id)
+      .then(returnObject => {
+          return res.json(serializeBookmark(returnObject))
+      })
+      .catch(next)
+      
     })
-    .delete((req, res) => {
+    .delete((req, res, next) => {
       const { id } = req.params;
-      const index = bookmarks.findIndex(bm => bm.id == id);
+      const knexInstance = req.app.get('db')
 
-      if(index === -1) {
-        logger.error(`List with id ${id} not found.`);
-        return res
-          .status(404)
-          .send('Not Found');
-      }
-
-      bookmarks.splice(index, 1);
-
-      logger.info(`List with id ${id} deleted.`);
-      res
-        .status(204)
-        .end();
+      BookmarksService.deleteBookmark(knexInstance, id)
+      .then(returnObject => {
+          return res.json(serializeBookmark(returnObject))
+      })
+      .catch(next)
     })
+
+
 
 module.exports = bookmarksRouter;
   

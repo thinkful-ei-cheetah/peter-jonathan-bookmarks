@@ -18,3 +18,19 @@
 {"message":"List with id 64d6db27-bba0-45ff-895a-b0d81216ed37 created","level":"info"}
 {"message":"List with id 64d6db27-bba0-45ff-895a-b0d81216ed37 deleted.","level":"info"}
 {"message":"Unauthorized request to path: /bookmarks","level":"error"}
+{"message":"Unauthorized request to path: /","level":"error"}
+{"message":"Unauthorized request to path: /favicon.ico","level":"error"}
+{"message":"Unauthorized request to path: /","level":"error"}
+{"message":"Unauthorized request to path: /favicon.ico","level":"error"}
+{"message":"Unauthorized request to path: /","level":"error"}
+{"message":"Unauthorized request to path: /favicon.ico","level":"error"}
+{"message":"Title is required","level":"error"}
+{"message":"Title is required","level":"error"}
+{"message":"Title is required","level":"error"}
+{"message":"Url is required","level":"error"}
+{"message":"Url is required","level":"error"}
+{"message":"Title is required","level":"error"}
+{"message":"List with id 1 not found.","level":"error"}
+{"message":"List with id 1 not found.","level":"error"}
+{"message":"List with id 1 not found.","level":"error"}
+{"message":"List with id 1 not found.","level":"error"}
