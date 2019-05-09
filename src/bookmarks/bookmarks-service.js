@@ -6,6 +6,9 @@ const BookmarksService = {
     insertBookmark(knex, insertBookmark) {
         return knex.insert(insertBookmark).into('bookmarks');
     },
+    patchBookmark(knex, patchBookmark) {
+        return knex('bookmarks').where('id', patchBookmark.id).update(patchBookmark);
+    },
     deleteBookmark(knex, id){
         return knex('bookmarks')
         .where('id', id)

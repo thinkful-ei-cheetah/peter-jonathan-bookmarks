@@ -91,6 +91,31 @@ bookmarksRouter
       .catch(next)
     })
 
+  bookmarksRouter
+    .route('/bookmarks/:id')
+    .patch(bodyParser, (req, res, next) => {
+      console.log(req.body)
+      const { id, title, url, rating, description } = req.body;
+      const parsedRating = parseInt(rating);
+      const parseId = parseInt(id);
+      const knexInstance = req.app.get('db');
+    
+      const patchBookmark = {
+        title: title,
+        rating: rating,
+        url: url,
+        description: description,
+        id: id
+      }
+
+      BookmarksService.patchBookmark(knexInstance, patchBookmark)
+      .then(returnObject => {
+          return res.json(returnObject)
+      })
+      .catch(next)
+      
+    })
+
 
 
 module.exports = bookmarksRouter;
