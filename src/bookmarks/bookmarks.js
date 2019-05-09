@@ -14,7 +14,7 @@ const serializeBookmark = bookmark => ({
 })
 
 bookmarksRouter
-  .route('/bookmarks')
+  .route('/api/bookmarks')
   .get((req, res, next) => {
       const knexInstance = req.app.get('db')
 
@@ -66,7 +66,7 @@ bookmarksRouter
   })
 
   bookmarksRouter
-    .route('/bookmarks/:id')
+    .route('/api/bookmarks/:id')
     .get((req, res, next) => {
       const { id } = req.params;
       const parseId = parseInt(id);
@@ -92,7 +92,7 @@ bookmarksRouter
     })
 
   bookmarksRouter
-    .route('/bookmarks/:id')
+    .route('/api/bookmarks/:id')
     .patch(bodyParser, (req, res, next) => {
       console.log(req.body)
       const { id, title, url, rating, description } = req.body;
